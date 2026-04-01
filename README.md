@@ -27,7 +27,7 @@ erDiagram
         INT id PK
         VARCHAR nome
         VARCHAR email UK
-        INT avaliacao_fisica_id FK
+        INT avaliacao_fisica_id FK "UNIQUE"
     }
 
     avaliacoes_fisicas {
@@ -50,13 +50,14 @@ erDiagram
     }
 
     treinos_exercicios {
-        INT treino_id FK
-        INT exercicio_id FK
+        INT treino_id PK "FK"
+        INT exercicio_id PK "FK"
     }
 
-    alunos ||--o| avaliacoes_fisicas : "possui"
-    alunos ||--o{ treinos : "realiza"
-    treinos }o--o{ exercicios : "treinos_exercicios"
+    alunos ||--|| avaliacoes_fisicas : "1:1"
+    alunos ||--o{ treinos : "1:N"
+    treinos ||--o{ treinos_exercicios : "1:N"
+    exercicios ||--o{ treinos_exercicios : "1:N"
 ```
 
 ---
