@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Builder
-public class AlunoDTO {
+public class AlunoDto {
 
     @NotBlank
     private String nome;

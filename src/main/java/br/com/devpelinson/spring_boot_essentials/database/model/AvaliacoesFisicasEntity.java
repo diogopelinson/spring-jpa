@@ -1,5 +1,6 @@
 package br.com.devpelinson.spring_boot_essentials.database.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
