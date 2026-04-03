@@ -1,6 +1,7 @@
 package br.com.devpelinson.spring_boot_essentials.controller;
 
 import br.com.devpelinson.spring_boot_essentials.dto.AvaliacaoFisicaDto;
+import br.com.devpelinson.spring_boot_essentials.dto.AvaliacoesFisicasProjection;
 import br.com.devpelinson.spring_boot_essentials.exception.BadRequestException;
 import br.com.devpelinson.spring_boot_essentials.exception.NotFoundException;
 import br.com.devpelinson.spring_boot_essentials.service.AvaliacaoFisicaService;
@@ -9,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/avaliacoes")
@@ -22,5 +25,11 @@ public class AvaliacoesFisicasController {
     @ResponseStatus(HttpStatus.CREATED)
     public void criarAvaliacaoFisica(@Valid @RequestBody AvaliacaoFisicaDto avaliacaoFisicaDto) throws NotFoundException, BadRequestException {
         avaliacaoFisicaService.criarAvalicaoFisica(avaliacaoFisicaDto);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<AvaliacoesFisicasProjection> getAllAvaliacoes(){
+        return avaliacaoFisicaService.getAllAvaliacoes();
     }
 }
