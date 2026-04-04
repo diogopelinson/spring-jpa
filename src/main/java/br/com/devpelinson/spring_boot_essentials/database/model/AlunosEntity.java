@@ -25,7 +25,7 @@ public class AlunosEntity {
     private String email;
 
     // EAGER
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "avaliacao_fisica_id")
     private AvaliacoesFisicasEntity avaliacoesFisica;
 
