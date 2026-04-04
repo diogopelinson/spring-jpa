@@ -7,6 +7,7 @@ import br.com.devpelinson.spring_boot_essentials.exception.NotFoundException;
 import br.com.devpelinson.spring_boot_essentials.service.AvaliacaoFisicaService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +32,11 @@ public class AvaliacoesFisicasController {
     @ResponseStatus(HttpStatus.OK)
     public List<AvaliacoesFisicasProjection> getAllAvaliacoes(){
         return avaliacaoFisicaService.getAllAvaliacoes();
+    }
+
+    @GetMapping("/page/{page}/size/{size}")
+    @ResponseStatus(HttpStatus.OK)
+    public Page<AvaliacoesFisicasProjection> getAllAvaliacoesPage(@PathVariable Integer page, @PathVariable Integer size){
+        return avaliacaoFisicaService.getAllAvaliacoesPage(page, size);
     }
 }

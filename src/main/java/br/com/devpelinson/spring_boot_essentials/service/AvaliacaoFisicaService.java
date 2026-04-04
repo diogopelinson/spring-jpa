@@ -9,6 +9,8 @@ import br.com.devpelinson.spring_boot_essentials.dto.AvaliacoesFisicasProjection
 import br.com.devpelinson.spring_boot_essentials.exception.BadRequestException;
 import br.com.devpelinson.spring_boot_essentials.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,5 +42,9 @@ public class AvaliacaoFisicaService {
 
     public List<AvaliacoesFisicasProjection> getAllAvaliacoes(){
         return avaliacoesFisicasRepository.getAllAvaliacoes();
+    }
+
+    public Page<AvaliacoesFisicasProjection> getAllAvaliacoesPage(Integer page, Integer size){
+        return avaliacoesFisicasRepository.getAllAvaliacoesPage(PageRequest.of(page, size));
     }
 }
